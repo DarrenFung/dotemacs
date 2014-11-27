@@ -8,7 +8,7 @@
 (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
 
 ;; Enable smartparens
-;; (smartparens-global-mode)
+(smartparens-global-mode)
 
 ;; Enable zenburn theme
 (load-theme 'zenburn t)
@@ -16,6 +16,9 @@
 ;; Setup jedi
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+
+;; Setup rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Setup helm
 (require 'helm-config)
@@ -50,3 +53,17 @@
 
 ;; Setup org JIRA
 (setq jiralib-url "https://jira.evbhome.com")
+
+;; Setup multiple cursors
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; Setup yasnippet
+(yas-global-mode 1)
+
+;; Setup web mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(setq web-mode-engines-alist
+      '(("mako"    . "\\.html?\\'"))
+)
